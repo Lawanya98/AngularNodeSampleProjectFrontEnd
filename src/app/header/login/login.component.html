@@ -1,0 +1,39 @@
+<div role="document" class="modal-dialog common-modals modal-sm modal-lg modal-xl">
+  <div class="modal-content">
+    <div class="modal-header  blue flex-column position-relative">
+      <h4 class="modal-title ff-eagle title2">User Login</h4>
+      <!-- <h4 class="modal-title ff-eagle title2">{{modalTitle}}</h4>
+      <p class="mb-0">{{subTitle}}</p> -->
+      <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+
+      <div class="card-body p-0">
+        <div class="modal-wrapper">
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+            <div class="form-group">
+              <label class="small mb-1" for="userName">Username</label>
+              <input class="form-control py-4" formControlName="userName" placeholder="Enter username" id="userName"
+                type="text">
+            </div>
+
+          </form>
+        </div>
+
+      </div>
+    </div>
+    <!-- <div class="d-flex justify-content-center loading2 modal-backdrop" *ngIf="sharedService.getIsLoading()">
+      <div class="loading-wrapper center-v-h">
+      <div class="spinner-border text-primary center-v-h" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+      </div>
+    </div> -->
+    <!--<div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+      </div>-->
+  </div>
+</div>
