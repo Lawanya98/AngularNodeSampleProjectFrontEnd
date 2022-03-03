@@ -77,6 +77,7 @@ export class ItemsComponent implements OnInit {
   }
 
   addItem() {
+    console.log(this.registrationForm.value);
     this.service.addNewItem(this.registrationForm.value).subscribe((response) => {
       console.log(response);
 
