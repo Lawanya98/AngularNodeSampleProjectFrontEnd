@@ -30,22 +30,38 @@
               <label class="small mb-1" for="email">Email</label>
               <input class="form-control py-4" formControlName="email" placeholder="Enter Email" id="email" type="text"
                 [ngClass]="{'is-invalid': f.email.invalid && f.email.touched}">
-              <small *ngIf="f.email.errors?.required" class="text-danger">Email Required</small>
-              <small *ngIf="f.email.errors?.pattern" class="text-danger">Email should be in the pattern of
-                abc@gmail.com</small>
+              <div *ngIf="f.email.invalid && f.email.touched">
+                <small *ngIf="f.email.errors?.required" class="text-danger">Email Required</small>
+                <small *ngIf="f.email.errors?.pattern" class="text-danger">Email should be in the pattern of
+                  abc@gmail.com</small>
+              </div>
             </div>
 
             <div class="form-group">
               <label class="small mb-1" for="phoneNumber">Phone Number</label>
               <input class="form-control py-4" formControlName="phoneNumber" placeholder="Enter Phone Number"
                 id="phoneNumber" type="text" [ngClass]="{'is-invalid': f.phoneNumber.invalid && f.phoneNumber.touched}">
-              <small *ngIf="f.phoneNumber.errors?.required" class="text-danger">Phone Number Required</small>
+              <div *ngIf="f.phoneNumber.invalid && f.phoneNumber.touched">
+                <small *ngIf="f.phoneNumber.errors?.required" class="text-danger">Phone Number Required</small>
+                <small *ngIf="f.phoneNumber.errors?.minlength" class="text-danger">Phone number should contain atleast
+                  10
+                  digits</small>
+                <small *ngIf="f.phoneNumber.errors?.maxlength" class="text-danger">Phone number should not exceed 10
+                  digits</small>
+              </div>
             </div>
 
             <div class="form-group">
               <label class="small mb-1" for="password">Password</label>
               <input class="form-control py-4" formControlName="password" placeholder="Enter Password" id="password"
                 type="password" [ngClass]="{'is-invalid': f.password.invalid && f.password.touched}">
+              <div *ngIf="f.password.invalid && f.password.touched">
+                <small *ngIf="f.password.errors?.required" class="text-danger">Password
+                  Required</small>
+                <small *ngIf="f.password.errors?.pattern" class="text-danger">Password must contain minimum eight
+                  characters, at least one uppercase letter, one lowercase letter, one number and one special
+                  character</small>
+              </div>
             </div>
 
             <div class="form-group">
@@ -54,8 +70,13 @@
                 id="confirmPassword" type="password"
                 [ngClass]="{'is-invalid': f.confirmPassword.invalid && f.confirmPassword.touched}">
             </div>
+
             <br />
-            <button class="class btn btn-primary" type="submit">Submit</button>
+            <div
+              *ngIf="!(f.userName.errors||f.email.errors||f.phoneNumber.errors||f.password.errors||f.confirmPassword.errors)">
+              <button class="class btn btn-primary" type="submit">Submit</button>
+            </div>
+
             <button class="btn btn-secondary" type="reset" (click)="onReset()">Cancel</button>
           </form>
         </div>
