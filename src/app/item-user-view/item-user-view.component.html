@@ -1,0 +1,65 @@
+<div class="container-fluid">
+  <button (click)="getItemsFromAPI()" type="button" class="class btn btn-primary">View all Items</button>
+  <br />
+  <br />
+
+  <label>Item ID</label>
+  <input #searchId type="text">
+  <br />
+  <br />
+  <button type="button" class="class btn btn-primary" (click)="searchItem(searchId.value)">Search Items</button>
+  <button type="button" class="class btn btn-primary" (click)="deleteItem(searchId.value)">Delete an Item</button>
+
+
+
+  <br />
+  <br />
+  <div>
+    <form [formGroup]="registrationForm">
+      <div class=" form-group">
+        <label>Item Id</label>
+        <input type="text" class="form-control" formControlName="ItemId">
+      </div>
+      <div class="form-group">
+        <label>Item Name</label>
+        <input type="text" class="form-control" formControlName="ItemName">
+      </div>
+      <div class="form-group">
+        <label>Quantity</label>
+        <input type="text" class="form-control" formControlName="Qauntity">
+      </div>
+      <div class="form-group">
+        <label>Price</label>
+        <input type="text" class="form-control" formControlName="Price">
+      </div>
+      <button (click)="addItem()" type="button" class="class btn btn-primary">Add New Items</button>
+      <button type="button" class="class btn btn-primary" (click)="updateItem(searchId.value)">Update an Item</button>
+    </form>
+  </div> -->
+
+
+  <div style="text-align:center">
+    <table class="table" [class.d-none]="listVisibility.value">
+      <thead>
+        <tr>
+          <th scope="col">Item Id</th>
+          <th scope="col">Item Name</th>
+          <th scope="col">Item Price</th>
+          <th scope="col">Qauntity</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of items">
+          <th scope="row">{{item.ItemId}}</th>
+          <td>{{item.ItemName}}</td>
+          <td>{{item.Qauntity}}</td>
+          <td>{{item.Price}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>{{listVisibility}}</p>
+  </div>
+
+
+  <p>{{listVisibility}}</p>
+</div>
