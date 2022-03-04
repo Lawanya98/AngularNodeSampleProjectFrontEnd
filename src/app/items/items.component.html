@@ -1,5 +1,5 @@
 <div class="container-fluid">
-  <button (click)="getItemsFromAPI()" type="button" class="class btn btn-primary">View all Items</button>
+  <!-- <button (click)="getItemsFromAPI()" type="button" class="class btn btn-primary">View all Items</button>
   <br />
   <br />
 
@@ -35,10 +35,10 @@
       <button (click)="addItem()" type="button" class="class btn btn-primary">Add New Items</button>
       <button type="button" class="class btn btn-primary" (click)="updateItem(searchId.value)">Update an Item</button>
     </form>
-  </div>
+  </div> -->
 
 
-  <div style="text-align:center">
+  <!-- <div style="text-align:center">
     <table class="table" [class.d-none]="listVisibility.value">
       <thead>
         <tr>
@@ -58,5 +58,28 @@
       </tbody>
     </table>
     <p>{{listVisibility}}</p>
+  </div> -->
+
+  <div style="text-align:center">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Item Id</th>
+          <th scope="col">Item Name</th>
+          <th scope="col">Item Price</th>
+          <th scope="col">Qauntity</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of items">
+          <th scope="row">{{item.ItemId}}</th>
+          <td>{{item.ItemName}}</td>
+          <td>{{item.Qauntity}}</td>
+          <td>{{item.Price}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- <p>{{listVisibility}}</p> -->
   </div>
+
 </div>

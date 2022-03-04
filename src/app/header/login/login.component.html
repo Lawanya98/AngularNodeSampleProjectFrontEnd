@@ -16,9 +16,29 @@
 
             <div class="form-group">
               <label class="small mb-1" for="userName">Username</label>
-              <input class="form-control py-4" formControlName="userName" placeholder="Enter username" id="userName"
+              <input class="form-control py-4" formControlName="Username" placeholder="Enter username" id="userName"
                 type="text">
             </div>
+
+            <div class="form-group password-form-group">
+              <label class="small mb-1" for="inputPassword">Password</label>
+              <div class="input-group">
+                <input [type]="showPassword ? 'text' : 'password'" class="form-control py-4" formControlName="Password"
+                  placeholder="Enter password" id="inputPassword" />
+                <div class="input-group-append">
+                  <span class="input-group-text">
+                    <i class="fa" [ngClass]="{
+                                'fa-eye-slash': showPassword,
+                                'fa-eye': !showPassword
+                              }" (click)="toggleFieldTextType()"></i>
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <br />
+            <button class="class btn btn-primary" type="submit">Submit</button>
+            <button class="btn btn-secondary" type="reset" (click)="onReset()">Cancel</button>
 
           </form>
         </div>

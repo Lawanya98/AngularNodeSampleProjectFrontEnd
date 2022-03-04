@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { Router, ActivatedRoute } from '@angular/router';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { UserServicesService } from '../../services/user-services.service';
 import { MustMatch } from '../../shared/must-match.validators';
 import { User } from '../../shared/user.model';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -22,7 +23,7 @@ export class RegisterComponent implements OnInit {
     Email: ""
   };
 
-  constructor(private fb: FormBuilder, public activeModal: NgbActiveModal, public UserServices: UserServicesService, private router: Router) { }
+  constructor(private fb: FormBuilder, private modalService: NgbModal, public UserServices: UserServicesService, private router: Router, private activeModal: NgbActiveModal, private route: ActivatedRoute) { }
   entryComponent: [
     RegisterComponent
   ]
@@ -54,10 +55,13 @@ export class RegisterComponent implements OnInit {
     this.user.Password = this.f.password.value;
     console.log(this.user);
     this.UserServices.saveUser(this.user).subscribe(data => {
-      if (data['payload'].userId != null) {
-        console.log(data);
-        this.router.navigateByUrl('/');
-        this.registerForm.reset();
+      if (data['payload'] != null) {
+        console.log("data['payload']" + data['payload']);
+        // this.router.navigate([''], { relativeTo: this.route });
+        setTimeout(() => {
+          this.activeModal.dismiss();
+        }, 1000);
+
       }
 
     },

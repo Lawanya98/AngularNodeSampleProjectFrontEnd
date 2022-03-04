@@ -30,6 +30,7 @@ export class ItemsComponent implements OnInit {
       Price: ['']
     });
 
+    this.getItemsFromAPI();
   }
 
   getItemsFromAPI() {
