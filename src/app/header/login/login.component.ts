@@ -6,6 +6,7 @@ import Fingerprint2 from 'fingerprintjs2';
 import { UserServicesService } from '../../services/user-services.service';
 import { ToastrService } from 'ngx-toastr';
 import { Messages } from 'src/app/util/message';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -25,7 +26,11 @@ export class LoginComponent implements OnInit {
     DeviceId: ""
   };
 
-  constructor(private fb: FormBuilder, public activeModal: NgbActiveModal, public UserServices: UserServicesService, private toastr: ToastrService) { }
+  get f() {
+    return this.loginForm.controls;
+  }
+
+  constructor(private fb: FormBuilder, public activeModal: NgbActiveModal, public UserServices: UserServicesService, private toastr: ToastrService, private router: Router, private route: ActivatedRoute) { }
   entryComponents: [
     LoginComponent
   ]
@@ -72,6 +77,7 @@ export class LoginComponent implements OnInit {
         console.log(localStorage);
         setTimeout(() => {
           this.activeModal.dismiss();
+          this.router.navigate(['/items'], { relativeTo: this.route });
         }, 1000)
 
 

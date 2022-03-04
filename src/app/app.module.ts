@@ -12,7 +12,9 @@ import { RegisterComponent } from './header/register/register.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { ItemUserViewComponent } from './item-user-view/item-user-view.component';
+import { JwtModule, JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
+import { AuthGuardService } from './util/auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ItemsComponent,
     HeaderComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ItemUserViewComponent
   ],
   imports: [
     BrowserModule,
@@ -33,9 +36,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
       timeOut: 100000,
       preventDuplicates: true,
     }),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    JwtModule,
   ],
-  providers: [],
+  providers: [
+    JwtHelperService,
+    AuthGuardService,
+    {
+      provide: JWT_OPTIONS,
+      useValue: JWT_OPTIONS
+    }
+  ],
   bootstrap: [AppComponent],
   entryComponents: [
     LoginComponent,
