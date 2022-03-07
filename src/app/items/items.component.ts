@@ -13,7 +13,7 @@ export class ItemsComponent implements OnInit {
 
   registrationForm: FormGroup;
 
-  public items = [];
+  public items: any;
   public items2: any;
   public listVisibility = false;
   public count = 0;
@@ -37,7 +37,10 @@ export class ItemsComponent implements OnInit {
     console.log("get item clicked");
     this.service.getItems().subscribe((response: []) => {
       console.log(response);
-      this.items = response;
+      this.items = response['payload'];
+      // this.items.map((i) => {
+      //   console.log(i);
+      // })
       // this.listVisibility = !this.listVisibility;
       // return response;
     })

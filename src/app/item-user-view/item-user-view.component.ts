@@ -11,7 +11,7 @@ export class ItemUserViewComponent implements OnInit {
 
   registrationForm: FormGroup;
 
-  public items = [];
+  public items: any;
   public items2: any;
   public listVisibility = false;
   public count = 0;
@@ -32,16 +32,16 @@ export class ItemUserViewComponent implements OnInit {
     console.log("get item clicked");
     this.service.getItems().subscribe((response: []) => {
       console.log(response);
-      this.items = response;
+      this.items = response['payload'];
       // this.listVisibility = !this.listVisibility;
       // return response;
     })
   }
 
   searchItem(id) {
-    console.log("serch item clicked");
+    console.log("serch item clicked" + id);
     this.service.getItemById(id).subscribe((response) => {
-      this.items2 = response;
+      this.items2 = response['payload'];
       console.log(this.items2);
       // console.log(this.items2.ItemId);
       //undefined
