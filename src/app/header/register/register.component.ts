@@ -57,6 +57,7 @@ export class RegisterComponent implements OnInit {
     this.user.Password = this.f.password.value;
     console.log(this.user);
     this.UserServices.saveUser(this.user).subscribe(data => {
+      console.log("60-->" + data['payload']);
       if (data['payload'] != null) {
         console.log("data['payload']" + data['payload']);
         // this.router.navigate([''], { relativeTo: this.route });
@@ -66,7 +67,7 @@ export class RegisterComponent implements OnInit {
         this.toastr.success('Account Successfully', 'Success', {
           closeButton: true,
           tapToDismiss: true,
-          timeOut: 4000,
+          timeOut: 2000,
           positionClass: 'toast-top-center',
         })
         this.registerForm.reset();
@@ -74,7 +75,15 @@ export class RegisterComponent implements OnInit {
 
     },
       error => {
-        console.log(error);
+        // console.log("here on error");
+        // console.log(error);
+        this.toastr.error('Acoount Registration Error', 'Error', {
+          closeButton: true,
+          tapToDismiss: true,
+          timeOut: 2000,
+          positionClass: 'toast-top-center',
+        })
+
       }
     )
 
