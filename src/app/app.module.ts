@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ItemsComponent } from './items/items.component';
@@ -15,6 +14,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ItemUserViewComponent } from './item-user-view/item-user-view.component';
 import { JwtModule, JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { AuthGuardService } from './util/auth-guard.service';
+import { TokenInterceptorInterceptor } from './util/token-interceptor.interceptor';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,11 @@ import { AuthGuardService } from './util/auth-guard.service';
     {
       provide: JWT_OPTIONS,
       useValue: JWT_OPTIONS
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorInterceptor,
+      multi: true
     }
   ],
   bootstrap: [AppComponent],

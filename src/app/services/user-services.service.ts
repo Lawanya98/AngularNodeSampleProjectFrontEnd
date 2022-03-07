@@ -38,4 +38,16 @@ export class UserServicesService {
       })
     );
   }
+
+  refreshToken(params) {
+    return this.http.post('http://localhost:8090/api/refreshToken', params).pipe(
+      map(response => {
+        console.log(response);
+        return response
+      }),
+      catchError(error => {
+        return throwError(error)
+      })
+    );
+  }
 }
