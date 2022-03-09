@@ -16,6 +16,8 @@ import { JwtModule, JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { AuthGuardService } from './util/auth-guard.service';
 import { TokenInterceptorInterceptor } from './util/token-interceptor.interceptor';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ForgotPasswordComponent } from './header/login/forgot-password/forgot-password.component';
+import { ForgotUsernameComponent } from './header/login/forgot-username/forgot-username.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
     HeaderComponent,
     LoginComponent,
     RegisterComponent,
-    ItemUserViewComponent
+    ItemUserViewComponent,
+    ForgotPasswordComponent,
+    ForgotUsernameComponent
   ],
   imports: [
     BrowserModule,

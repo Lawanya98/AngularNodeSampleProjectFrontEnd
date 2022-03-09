@@ -50,4 +50,40 @@ export class UserServicesService {
       })
     );
   }
+
+  requestPasswordReset(userName, email) {
+    const user = {
+      Email: btoa(email),
+      UserName: btoa(userName)
+    }
+    return this.http.post('http://localhost:8090/api/requestPasswordReset', user).pipe(
+      map(response => {
+        console.log(response);
+        return response
+      }),
+      catchError(error => {
+        return throwError(error)
+      })
+    );
+  }
+
+  resetPassword(reqId, userReqId, keyCode, ipAddress, password, confirmPassword) {
+    const user = {
+      ReqId: reqId,
+      KeyCode: keyCode,
+      DeviceIP: ipAddress,
+      UserId: userReqId,
+      NewPassword: password,
+      ConfirmPassword: confirmPassword
+    }
+    return this.http.post('http://localhost:8090/api/resetPassword', user).pipe(
+      map(response => {
+        console.log(response);
+        return response
+      }),
+      catchError(error => {
+        return throwError(error)
+      })
+    );
+  }
 }

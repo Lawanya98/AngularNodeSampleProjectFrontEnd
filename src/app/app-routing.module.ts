@@ -3,12 +3,15 @@ import { Routes, RouterModule } from '@angular/router';
 import { ItemsComponent } from './items/items.component';
 import { ItemUserViewComponent } from './item-user-view/item-user-view.component';
 import { AuthGuardService as AuthGuard } from './util/auth-guard.service';
+import { ForgotPasswordComponent } from './header/login/forgot-password/forgot-password.component';
+import { ForgotUsernameComponent } from './header/login/forgot-username/forgot-username.component';
 
 const routes: Routes = [
   { path: '', component: ItemsComponent },
   //path to add, delete page with auth
-  { path: 'items', component: ItemUserViewComponent, canActivate: [AuthGuard] }
-
+  { path: 'items', component: ItemUserViewComponent, canActivate: [AuthGuard] },
+  { path: 'forgotpassword', component: ForgotPasswordComponent },
+  { path: 'forgotusername', component: ForgotUsernameComponent },
 ];
 
 @NgModule({

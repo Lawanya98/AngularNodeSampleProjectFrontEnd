@@ -47,6 +47,15 @@
 
       </div>
     </div>
+    <div class="modal-footer">
+      <div class="mediuem">
+        <a class="mediuem dark-blue-link underline-text" [routerLink]="['/forgotusername']"
+          (click)="closeModal()">Forgot
+          Username?</a>
+        <a class="mediuem float-right dark-blue-link underline-text" [routerLink]="['/forgotpassword']"
+          (click)="closeModal()">Forgot Password?</a>
+      </div>
+    </div>
     <!-- <div class="d-flex justify-content-center loading2 modal-backdrop" *ngIf="sharedService.getIsLoading()">
       <div class="loading-wrapper center-v-h">
       <div class="spinner-border text-primary center-v-h" role="status">
