@@ -67,16 +67,40 @@ export class UserServicesService {
     );
   }
 
-  resetPassword(reqId, userReqId, keyCode, ipAddress, password, confirmPassword) {
+  resetPassword(reqId, userReqId, keyCode, password, confirmPassword) {
     const user = {
       ReqId: reqId,
       KeyCode: keyCode,
-      DeviceIP: ipAddress,
       UserId: userReqId,
       NewPassword: password,
       ConfirmPassword: confirmPassword
     }
     return this.http.post('http://localhost:8090/api/resetPassword', user).pipe(
+      map(response => {
+        console.log(response);
+        return response
+      }),
+      catchError(error => {
+        return throwError(error)
+      })
+    );
+  }
+
+  validateForgotPasswordResetLinkActivated(reqId, keyCode) {
+    return this.http.get(`http://localhost:8090/api/validatePasswordResetLink/${reqId}/${keyCode}`).pipe(
+      map(response => {
+        console.log(response);
+        return response
+      }),
+      catchError(error => {
+        return throwError(error)
+      })
+    );
+  }
+
+  checkPasswordAvailability(password, userId, reqId) {
+    let passwordEnc = btoa(password);
+    return this.http.get(`http://localhost:8090/api/checkPasswordAvailability/${passwordEnc}/${userId}/${reqId}`).pipe(
       map(response => {
         console.log(response);
         return response

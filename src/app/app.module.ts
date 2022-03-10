@@ -18,6 +18,7 @@ import { TokenInterceptorInterceptor } from './util/token-interceptor.intercepto
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ForgotPasswordComponent } from './header/login/forgot-password/forgot-password.component';
 import { ForgotUsernameComponent } from './header/login/forgot-username/forgot-username.component';
+import { ResetPasswordComponent } from './header/login/reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ForgotUsernameComponent } from './header/login/forgot-username/forgot-u
     RegisterComponent,
     ItemUserViewComponent,
     ForgotPasswordComponent,
-    ForgotUsernameComponent
+    ForgotUsernameComponent,
+    ResetPasswordComponent
   ],
   imports: [
     BrowserModule,
