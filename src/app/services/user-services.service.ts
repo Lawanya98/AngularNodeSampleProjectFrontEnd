@@ -26,9 +26,35 @@ export class UserServicesService {
     );
   }
 
+  authenicateUser(data: any) {
+    console.log(data);
+    return this.http.post('http://localhost:8090/api/authenticateUser', data).pipe(
+      map(response => {
+        console.log(response);
+        return response
+      }),
+      catchError(error => {
+        return throwError(error)
+      })
+    );
+  }
+
   logUser(user: any) {
     console.log(user);
     return this.http.post('http://localhost:8090/api/loginUser', user).pipe(
+      map(response => {
+        console.log(response);
+        return response
+      }),
+      catchError(error => {
+        return throwError(error)
+      })
+    );
+  }
+
+  updateOTP(data: any) {
+    console.log(data);
+    return this.http.post('http://localhost:8090/api/updateOTP', data).pipe(
       map(response => {
         console.log(response);
         return response

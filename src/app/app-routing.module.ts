@@ -6,6 +6,7 @@ import { AuthGuardService as AuthGuard } from './util/auth-guard.service';
 import { ForgotPasswordComponent } from './header/login/forgot-password/forgot-password.component';
 import { ForgotUsernameComponent } from './header/login/forgot-username/forgot-username.component';
 import { ResetPasswordComponent } from './header/login/reset-password/reset-password.component';
+import { OtpVerifyComponent } from './header/register/otp-verify/otp-verify.component';
 
 const routes: Routes = [
   { path: '', component: ItemsComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'forgotpassword', component: ForgotPasswordComponent },
   { path: 'resetpassword', component: ResetPasswordComponent },
   { path: 'forgotusername', component: ForgotUsernameComponent },
+  { path: 'otpverify/:name', component: OtpVerifyComponent }
 ];
 
 @NgModule({

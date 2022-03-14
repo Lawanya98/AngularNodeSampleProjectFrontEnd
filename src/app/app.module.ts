@@ -19,6 +19,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ForgotPasswordComponent } from './header/login/forgot-password/forgot-password.component';
 import { ForgotUsernameComponent } from './header/login/forgot-username/forgot-username.component';
 import { ResetPasswordComponent } from './header/login/reset-password/reset-password.component';
+import { OtpVerifyComponent } from './header/register/otp-verify/otp-verify.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { ResetPasswordComponent } from './header/login/reset-password/reset-pass
     ItemUserViewComponent,
     ForgotPasswordComponent,
     ForgotUsernameComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    OtpVerifyComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,28 @@
+<div id="content-wrapper" class="container-fluid ">
+  <div class="row justify-content-center">
+    <div class="col-lg-5">
+      <div class="card  card widget login-widget blue mb-5 mt-5">
+        <div class="card-header">
+          <div class="w-100 position-relative">
+            <h2 class="m-0 font-weight-bold ff-eagle title2 mt-2">Verify OTP</h2>
+          </div>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="otpVerifyForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <label class="small mb-1" for="otp">OTP Code</label>
+              <input class="form-control py-4" formControlName="otp" id="otp" type="text" placeholder="Enter OTP">
+            </div>
+
+
+            <button class="btn common-btn btn-primary big w-100 ff-eagle" [disabled]="!otpVerifyForm.valid">
+              Submit </button>
+          </form>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>

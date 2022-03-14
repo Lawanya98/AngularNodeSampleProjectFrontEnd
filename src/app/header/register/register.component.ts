@@ -64,13 +64,14 @@ export class RegisterComponent implements OnInit {
         setTimeout(() => {
           this.activeModal.dismiss();
         }, 1000);
-        this.toastr.success('Account Successfully', 'Success', {
-          closeButton: true,
-          tapToDismiss: true,
-          timeOut: 2000,
-          positionClass: 'toast-top-center',
-        })
-        this.registerForm.reset();
+        // this.toastr.success('Account Successfully', 'Success', {
+        //   closeButton: true,
+        //   tapToDismiss: true,
+        //   timeOut: 2000,
+        //   positionClass: 'toast-top-center',
+        // })
+        // this.registerForm.reset();
+        this.router.navigate(['/otpverify', this.user.Username], { relativeTo: this.route });
       }
 
     },

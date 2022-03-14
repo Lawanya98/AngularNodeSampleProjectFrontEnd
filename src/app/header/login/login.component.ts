@@ -26,6 +26,8 @@ export class LoginComponent implements OnInit {
     DeviceId: ""
   };
 
+
+
   get f() {
     return this.loginForm.controls;
   }
@@ -68,6 +70,32 @@ export class LoginComponent implements OnInit {
           tapToDismiss: true,
           positionClass: 'toast-top-center'
         });
+      } else if (data['payload'].message == 'OTP is not verified') {
+
+        this.toastr.error(Messages.OTP_NOT_VERIFIED, 'Error', {
+          closeButton: true,
+          tapToDismiss: true,
+          positionClass: 'toast-top-center'
+        });
+
+        this.activeModal.dismiss();
+        this.user.Username = data['payload'].user[0].Username
+        console.log(this.user)
+        this.UserServices.updateOTP(this.user).subscribe(data => {
+          if (data['status'].message == 'Successfully_Created_New_OTP') {
+            this.toastr.success(Messages.ENTER_NEW_OTP, 'Success', {
+              closeButton: true,
+              tapToDismiss: true,
+              positionClass: 'toast-top-center'
+            });
+          } else {
+            console.log(data['status'].message);
+          }
+        }, error => {
+          console.log(error);
+        })
+        this.router.navigate(['/otpverify', data['payload'].user[0].Username], { relativeTo: this.route });
+
       } else {
         localStorage.setItem('apiToken', data['payload'].token);
         localStorage.setItem('refreshToken', data['payload'].refreshToken);
@@ -90,7 +118,6 @@ export class LoginComponent implements OnInit {
           tapToDismiss: true,
           positionClass: 'toast-top-center'
         });
-
       })
 
   }
