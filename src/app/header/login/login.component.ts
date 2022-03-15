@@ -7,7 +7,7 @@ import { UserServicesService } from '../../services/user-services.service';
 import { ToastrService } from 'ngx-toastr';
 import { Messages } from 'src/app/util/message';
 import { ActivatedRoute, Router } from '@angular/router';
-
+import { SharedServiceService } from 'src/app/services/shared-service.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -32,12 +32,13 @@ export class LoginComponent implements OnInit {
     return this.loginForm.controls;
   }
 
-  constructor(private fb: FormBuilder, public activeModal: NgbActiveModal, public UserServices: UserServicesService, private toastr: ToastrService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private fb: FormBuilder, public activeModal: NgbActiveModal, public UserServices: UserServicesService, private toastr: ToastrService, private router: Router, private route: ActivatedRoute, private sharedService: SharedServiceService) { }
   entryComponents: [
     LoginComponent
   ]
 
   ngOnInit() {
+    this.sharedService.setIsLoggedIn(false);
     this.loginForm = this.fb.group({
       Username: ['', [Validators.required]],
       Password: ['', [Validators.required]]

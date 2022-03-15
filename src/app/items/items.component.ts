@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ItemServiceService } from '../services/item-service.service';
-
+import { SharedServiceService } from '../services/shared-service.service';
 
 @Component({
   selector: 'app-items',
@@ -18,11 +18,12 @@ export class ItemsComponent implements OnInit {
   public listVisibility = false;
   public count = 0;
 
-  constructor(private service: ItemServiceService, private fb: FormBuilder) { }
+  constructor(private service: ItemServiceService, private fb: FormBuilder, private sharedService: SharedServiceService) { }
 
   get f() { return this.registrationForm.controls; }
 
   ngOnInit() {
+    this.sharedService.setIsLoggedIn(false);
     this.registrationForm = this.fb.group({
       ItemId: [''],
       ItemName: [''],
